@@ -1,162 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator</title>
     <link rel="stylesheet" href="BMI.css">
 </head>
-
 <body>
 
-    <!-- Top App Header -->
-    <header class="app-header">
-        <div class="header-container">
-            <div class="brand">
-                <span class="brand-icon">⚖️</span>
-                <h1 class="brand-title">BMI CALCULATOR</h1>
-            </div>
-            <button id="sidebarToggleBtn" class="btn-history-toggle">
-                <span>⏰</span> History & Favorites
-            </button>
-        </div>
-    </header>
-
-    <!-- Main App Container -->
-    <main class="main-container">
-
-        <!-- Error Alert Banner -->
-        <div id="errorMessage" class="alert-box hidden" role="alert"></div>
-
-        <!-- Calculator Input Card -->
-        <section class="card input-card">
-            <h2 class="card-title">Enter Your Details</h2>
-
-            <form id="bmiForm" onsubmit="return false;">
-
-                <!-- Weight Input Field -->
-                <div class="form-group">
-                    <label for="weightInput" class="form-label">Weight (kg)</label>
-                    <div class="input-control">
-                        <button type="button" class="btn-step" id="weightMinusBtn"
-                            aria-label="Decrease weight">-</button>
-                        <input type="number" id="weightInput" value="70" min="2" max="300" step="0.1"
-                            placeholder="e.g. 70" required>
-                        <button type="button" class="btn-step" id="weightPlusBtn"
-                            aria-label="Increase weight">+</button>
-                        <span class="unit-tag">kg</span>
-                    </div>
-                </div>
-
-                <!-- Height Input Field & Slider -->
-                <div class="form-group">
-                    <div class="label-row">
-                        <label for="heightInput" class="form-label">Height (cm)</label>
-                        <span id="heightValueDisplay" class="height-display-badge">170 cm</span>
-                    </div>
-                    <div class="input-control">
-                        <button type="button" class="btn-step" id="heightMinusBtn"
-                            aria-label="Decrease height">-</button>
-                        <input type="number" id="heightInput" value="170" min="30" max="250" step="0.1"
-                            placeholder="e.g. 170" required>
-                        <button type="button" class="btn-step" id="heightPlusBtn"
-                            aria-label="Increase height">+</button>
-                        <span class="unit-tag">cm</span>
-                    </div>
-                    <div class="range-wrapper">
-                        <input type="range" id="heightSlider" min="100" max="220" value="170" step="1">
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="button-row">
-                    <button type="submit" id="calcBtn" class="btn btn-primary">
-                        Calculate BMI
-                    </button>
-                    <button type="button" id="resetBtn" class="btn btn-secondary">
-                        Reset
-                    </button>
-                </div>
-
-            </form>
-        </section>
-
-        <!-- Result Display Card -->
-        <section id="resultCard" class="card result-card hidden">
-            <h2 class="card-title">Your Result</h2>
-
-            <div class="score-container">
-                <div id="bmiValue" class="bmi-score">22.5</div>
-                <div id="bmiCategoryBadge" class="category-badge">Normal Weight</div>
-            </div>
-
-            <!-- Visual Scale Gauge -->
-            <div class="gauge-section">
-                <div class="scale-bar">
-                    <div class="scale-seg seg-underweight" title="Underweight (< 18.5)"></div>
-                    <div class="scale-seg seg-normal" title="Normal (18.5 - 24.9)"></div>
-                    <div class="scale-seg seg-overweight" title="Overweight (25 - 29.9)"></div>
-                    <div class="scale-seg seg-obese" title="Obesity (≥ 30)"></div>
-                </div>
-
-                <!-- Pointer Pin -->
-                <div id="scalePointer" class="scale-pointer" style="left: 40%;">
-                    <div class="pointer-pin"></div>
-                    <div id="pointerValue" class="pointer-badge">22.5</div>
-                </div>
-
-                <!-- Legend -->
-                <div class="scale-legend">
-                    <span><i class="dot seg-underweight"></i> &lt; 18.5 Underweight</span>
-                    <span><i class="dot seg-normal"></i> 18.5–24.9 Normal</span>
-                    <span><i class="dot seg-overweight"></i> 25–29.9 Overweight</span>
-                    <span><i class="dot seg-obese"></i> ≥ 30 Obesity</span>
-                </div>
-            </div>
-
-            <p id="bmiDescription" class="result-tip"></p>
-
-            <!-- Save & Favorite Actions -->
-            <div class="save-actions-row">
-                <button type="button" id="saveBtn" class="btn btn-save">
-                    💾 Save to History
-                </button>
-                <button type="button" id="favResultBtn" class="btn btn-favorite">
-                    ⭐ Add to Favorites
-                </button>
-            </div>
-            <div id="saveStatus" class="save-status-toast hidden"></div>
-        </section>
-
-    </main>
-
-    <!-- Sidebar Overlay & Drawer -->
-    <div id="sidebarOverlay" class="sidebar-overlay hidden"></div>
-    <aside id="sidebarDrawer" class="sidebar-drawer closed">
-        <div class="sidebar-header">
-            <h2>Saved History & Favorites</h2>
-            <button id="closeSidebarBtn" class="btn-close">&times;</button>
+    <div class="calculator-container">
+        <h1>BMI Calculator</h1>
+        
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Enter your weight">
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="sidebar-tabs">
-            <button id="filterAllBtn" class="tab-btn active">All History</button>
-            <button id="filterFavBtn" class="tab-btn">⭐ Favorites</button>
+        <div class="input-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="Enter your height">
         </div>
 
-        <!-- History List -->
-        <div id="historyList" class="history-list">
+        <button onclick="calculateBMI()">Calculate BMI</button>
 
-        </div>
-
-        <!-- Sidebar Footer -->
-        <div class="sidebar-footer">
-            <button id="clearHistoryBtn" class="btn-clear">Clear All History</button>
-        </div>
-    </aside>
+        <div id="result"></div>
+    </div>
 
     <script src="BMI.js"></script>
 </body>
-
 </html>
