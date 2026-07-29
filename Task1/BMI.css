@@ -1,28 +1,18 @@
-/* ==========================================================================
-   BMI CALCULATOR - DARK THEME STYLESHEET
-   Clean Dark Mode Palette:
-   - Page Background: #0A0E21
-   - Cards: #111328 / #1D1E33
-   - Primary Accent: #3B82F6 (Blue)
-   - Favorite Amber: #F59E0B
-   - Muted Text: #8D8E98
-   ========================================================================== */
-
 :root {
   --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  
+
   --bg-page: #0A0E21;
   --bg-header: #111328;
   --bg-card: #111328;
   --bg-input: #1A1D36;
   --bg-card-active: #1D1E33;
   --bg-step-btn: #373A54;
-  
+
   --primary-blue: #3B82F6;
   --primary-blue-hover: #2563EB;
   --favorite-amber: #F59E0B;
   --favorite-amber-hover: #D97706;
-  
+
   --text-primary: #FFFFFF;
   --text-secondary: #8D8E98;
   --border-color: #24263B;
@@ -344,10 +334,25 @@ input[type="range"]::-webkit-slider-thumb:hover {
   letter-spacing: 0.5px;
 }
 
-.category-underweight { background-color: var(--color-underweight); color: #fff; }
-.category-normal { background-color: var(--color-normal); color: #0A0E21; }
-.category-overweight { background-color: var(--color-overweight); color: #0A0E21; }
-.category-obese { background-color: var(--color-obese); color: #fff; }
+.category-underweight {
+  background-color: var(--color-underweight);
+  color: #fff;
+}
+
+.category-normal {
+  background-color: var(--color-normal);
+  color: #0A0E21;
+}
+
+.category-overweight {
+  background-color: var(--color-overweight);
+  color: #0A0E21;
+}
+
+.category-obese {
+  background-color: var(--color-obese);
+  color: #fff;
+}
 
 /* Scale Section */
 .gauge-section {
@@ -366,11 +371,29 @@ input[type="range"]::-webkit-slider-thumb:hover {
   overflow: hidden;
 }
 
-.scale-seg { height: 100%; }
-.seg-underweight { background-color: var(--color-underweight); width: 28.33%; }
-.seg-normal { background-color: var(--color-normal); width: 21.67%; }
-.seg-overweight { background-color: var(--color-overweight); width: 16.67%; }
-.seg-obese { background-color: var(--color-obese); width: 33.33%; }
+.scale-seg {
+  height: 100%;
+}
+
+.seg-underweight {
+  background-color: var(--color-underweight);
+  width: 28.33%;
+}
+
+.seg-normal {
+  background-color: var(--color-normal);
+  width: 21.67%;
+}
+
+.seg-overweight {
+  background-color: var(--color-overweight);
+  width: 16.67%;
+}
+
+.seg-obese {
+  background-color: var(--color-obese);
+  width: 33.33%;
+}
 
 .scale-pointer {
   position: absolute;
@@ -476,9 +499,17 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-top: 4px;
 }
 
-.save-status-toast.saved { color: var(--color-normal); }
-.save-status-toast.favorite { color: var(--favorite-amber); }
-.save-status-toast.duplicate { color: var(--color-overweight); }
+.save-status-toast.saved {
+  color: var(--color-normal);
+}
+
+.save-status-toast.favorite {
+  color: var(--favorite-amber);
+}
+
+.save-status-toast.duplicate {
+  color: var(--color-overweight);
+}
 
 /* --------------------------------------------------------------------------
    Sidebar Drawer for History & Favorites

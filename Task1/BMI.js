@@ -47,10 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeFilter = 'all'; // 'all' or 'favorites'
     const STORAGE_KEY = 'bmi_calc_records_v4';
 
-    // --------------------------------------------------------------------------
-    // Event Listeners - Weight & Height Controls
-    // --------------------------------------------------------------------------
-
     // Step Weight Buttons
     weightMinusBtn.addEventListener('click', () => {
         let val = parseFloat(weightInput.value) || 70;
@@ -88,9 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heightInput.value = val;
         }
     });
-    // --------------------------------------------------------------------------
-    // Event Listeners - Height & Slider
-    // --------------------------------------------------------------------------
+
     heightInput.addEventListener('input', (e) => {
         const val = parseFloat(e.target.value);
         if (!isNaN(val) && val >= 100 && val <= 220) {
