@@ -1,9 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ----------------------------------------------------------------------
-    // 1. Mobile Hamburger Menu Toggle
-    // ----------------------------------------------------------------------
+
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const navLinks = document.getElementById('nav-links');
 
