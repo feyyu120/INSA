@@ -453,6 +453,29 @@ function saveDraft() {
   alert("Quiz saved! You can resume anytime from the left sidebar.");
 }
 
+// Delete item helper functions
+function deleteDraft(index) {
+  inProgressDrafts.splice(index, 1);
+  localStorage.setItem("quiz_drafts", JSON.stringify(inProgressDrafts));
+  updateSidebarLists();
+}
+
+function deleteHistoryItem(index) {
+  quizHistory.splice(index, 1);
+  localStorage.setItem("quiz_history", JSON.stringify(quizHistory));
+  updateSidebarLists();
+}
+
+function deleteFavorite(index) {
+  favoritedQuestions.splice(index, 1);
+  localStorage.setItem("quiz_favs", JSON.stringify(favoritedQuestions));
+  updateSidebarLists();
+  renderFavoritesView();
+  if (currentQuizQuestions.length > 0 && currentQuestionIndex < currentQuizQuestions.length) {
+    renderQuestion();
+  }
+}
+
 // Update Sidebar Lists
 function updateSidebarLists() {
   el.favBadge.textContent = favoritedQuestions.length;
@@ -468,7 +491,15 @@ function updateSidebarLists() {
       div.className = "history-item";
       div.innerHTML = `
         <span>Draft (${draft.date})</span>
-        <span style="color: var(--accent-star);">Resume</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--accent-star);">Resume</span>
+          <button class="btn-delete-item" title="Delete draft">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+        </div>
       `;
       div.addEventListener("click", () => {
         closeSidebarIfMobile();
@@ -478,6 +509,13 @@ function updateSidebarLists() {
         renderQuestion();
         switchView("quiz");
       });
+
+      const delBtn = div.querySelector(".btn-delete-item");
+      delBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteDraft(i);
+      });
+
       el.inprogressList.appendChild(div);
     }
   }
@@ -493,7 +531,15 @@ function updateSidebarLists() {
       div.className = "history-item";
       div.innerHTML = `
         <span>Quiz (${item.date})</span>
-        <span style="color: var(--accent-green); font-weight: bold;">${item.score}/${item.total} (${item.percent}%)</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--accent-green); font-weight: bold;">${item.score}/${item.total} (${item.percent}%)</span>
+          <button class="btn-delete-item" title="Delete history record">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+        </div>
       `;
       div.addEventListener("click", () => {
         closeSidebarIfMobile();
@@ -520,6 +566,13 @@ function updateSidebarLists() {
 
         switchView("results");
       });
+
+      const delBtn = div.querySelector(".btn-delete-item");
+      delBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteHistoryItem(i);
+      });
+
       el.historyList.appendChild(div);
     }
   }
@@ -540,11 +593,24 @@ function renderFavoritesView() {
     card.innerHTML = `
       <div class="fav-card-top">
         <strong>${q.question}</strong>
-        <span style="color: var(--accent-star);">★ Saved</span>
+        <button class="btn-delete-fav" title="Remove from Favorites">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          Remove
+        </button>
       </div>
       <div><strong>Correct Answer:</strong> ${q.options[q.answer]}</div>
       <div style="font-size: 0.85rem; color: var(--text-muted);">${q.explanation}</div>
     `;
+
+    const delBtn = card.querySelector(".btn-delete-fav");
+    delBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteFavorite(i);
+    });
+
     el.favContainer.appendChild(card);
   }
 }
