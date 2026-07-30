@@ -1,70 +1,6 @@
 // OpenTDB API Endpoint (Category 18 = Science: Computers)
 const OPENTDB_API_URL = "https://opentdb.com/api.php?amount=5&category=18&type=multiple";
 
-// Fallback Questions Bank (used if API fails or offline)
-const FALLBACK_QUESTIONS = [
-  {
-    id: 1,
-    question: "What does HTML stand for?",
-    options: [
-      "Hyper Text Markup Language",
-      "High Tech Modern Language",
-      "Hyperlink and Text Management Language",
-      "Home Tool Markup Language"
-    ],
-    answer: 0,
-    explanation: "HTML stands for Hyper Text Markup Language, the standard markup language for web pages."
-  },
-  {
-    id: 2,
-    question: "Which CSS property is used to change the background color of an element?",
-    options: [
-      "color",
-      "background-color",
-      "bg-color",
-      "canvas-color"
-    ],
-    answer: 1,
-    explanation: "The 'background-color' property sets the background color of an element in CSS."
-  },
-  {
-    id: 3,
-    question: "How do you declare a variable in modern JavaScript?",
-    options: [
-      "v myVar;",
-      "let myVar;",
-      "variable myVar;",
-      "dim myVar;"
-    ],
-    answer: 1,
-    explanation: "In modern JavaScript (ES6+), block-scoped variables are declared using 'let' or 'const'."
-  },
-  {
-    id: 4,
-    question: "Which of the following is used to loop through items in JavaScript?",
-    options: [
-      "for loop",
-      "repeat loop",
-      "cycle statement",
-      "jump loop"
-    ],
-    answer: 0,
-    explanation: "The 'for' loop (along with while, for...of, forEach) is used to iterate over code blocks in JavaScript."
-  },
-  {
-    id: 5,
-    question: "What is the correct file extension for JavaScript files?",
-    options: [
-      ".java",
-      ".script",
-      ".js",
-      ".html"
-    ],
-    answer: 2,
-    explanation: "JavaScript files use the '.js' extension."
-  }
-];
-
 // Active State
 let currentQuizQuestions = [];
 let currentQuestionIndex = 0;
@@ -89,11 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     favBadge: document.getElementById("fav-badge"),
     inprogressList: document.getElementById("inprogress-list"),
     historyList: document.getElementById("history-list"),
-    
+
     viewQuiz: document.getElementById("view-quiz"),
     viewResults: document.getElementById("view-results"),
     viewFavorites: document.getElementById("view-favorites"),
-    
+
     loadingSpinner: document.getElementById("loading-spinner"),
     quizCardContent: document.getElementById("quiz-card-content"),
     quizProgress: document.getElementById("quiz-progress"),
@@ -104,18 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
     optionsContainer: document.getElementById("options-container"),
     explanationAlert: document.getElementById("explanation-alert"),
     explanationText: document.getElementById("explanation-text"),
-    
+
     btnPrev: document.getElementById("btn-prev"),
     btnSaveDraft: document.getElementById("btn-save-draft"),
     btnNext: document.getElementById("btn-next"),
-    
+
     scoreCircle: document.getElementById("score-circle"),
     scorePercent: document.getElementById("score-percent"),
     resultsHeading: document.getElementById("results-heading"),
     resultsSummary: document.getElementById("results-summary"),
     reviewContainer: document.getElementById("review-container"),
     btnRestart: document.getElementById("btn-restart"),
-    
+
     favContainer: document.getElementById("fav-container")
   };
 
@@ -238,13 +174,13 @@ function fetchQuestionsAndStartQuiz() {
     .then((data) => {
       if (data.results && data.results.length > 0) {
         const fetched = [];
-        
+
         // Use a JS for loop to parse API results
         for (let i = 0; i < data.results.length; i++) {
           const item = data.results[i];
           const decodedQuestion = decodeHTML(item.question);
           const decodedCorrect = decodeHTML(item.correct_answer);
-          
+
           // Decode incorrect answers
           const decodedIncorrect = [];
           for (let j = 0; j < item.incorrect_answers.length; j++) {
@@ -281,22 +217,43 @@ function fetchQuestionsAndStartQuiz() {
         }
 
         currentQuizQuestions = fetched;
+        startNewQuizState();
       } else {
-        currentQuizQuestions = [...FALLBACK_QUESTIONS];
+        showFetchError("Unable to load questions from the website API.");
       }
-      startNewQuizState();
     })
     .catch((err) => {
-      console.warn("OpenTDB Fetch failed, loading fallback questions:", err);
-      currentQuizQuestions = [...FALLBACK_QUESTIONS];
-      startNewQuizState();
+      console.error("OpenTDB Fetch failed:", err);
+      showFetchError("Failed to fetch questions from the website API. Please check your network connection.");
     });
+}
+
+function showFetchError(message) {
+  el.loadingSpinner.classList.add("hidden");
+  el.quizCardContent.classList.remove("hidden");
+  el.questionNumber.textContent = "Error Loading Questions";
+  el.quizProgress.textContent = "";
+  el.questionTitle.textContent = message;
+  el.optionsContainer.innerHTML = `
+    <button class="btn btn-primary" id="btn-retry-fetch" style="margin-top: 1rem;">Retry Fetching Questions</button>
+  `;
+  const retryBtn = document.getElementById("btn-retry-fetch");
+  if (retryBtn) {
+    retryBtn.addEventListener("click", fetchQuestionsAndStartQuiz);
+  }
+  el.explanationAlert.classList.add("hidden");
+  el.btnPrev.disabled = true;
+  el.btnNext.disabled = true;
+  el.btnSaveDraft.disabled = true;
 }
 
 function startNewQuizState() {
   currentQuestionIndex = 0;
   userAnswers = new Array(currentQuizQuestions.length).fill(null);
-  
+
+  el.btnPrev.disabled = false;
+  el.btnNext.disabled = false;
+  el.btnSaveDraft.disabled = false;
   el.loadingSpinner.classList.add("hidden");
   el.quizCardContent.classList.remove("hidden");
   renderQuestion();
