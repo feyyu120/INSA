@@ -88,15 +88,15 @@ function attachEvents() {
 
   // Navigation Items
   el.btnNewQuiz.addEventListener("click", () => {
-    closeSidebar();
+    closeSidebarIfMobile();
     fetchQuestionsAndStartQuiz();
   });
   el.menuQuiz.addEventListener("click", () => {
-    closeSidebar();
+    closeSidebarIfMobile();
     switchView("quiz");
   });
   el.menuFavorites.addEventListener("click", () => {
-    closeSidebar();
+    closeSidebarIfMobile();
     renderFavoritesView();
     switchView("favorites");
   });
@@ -134,6 +134,12 @@ function closeSidebar() {
   el.sidebar.classList.remove("mobile-open");
   el.sidebarOverlay.classList.remove("active");
   document.body.classList.add("sidebar-closed");
+}
+
+function closeSidebarIfMobile() {
+  if (window.innerWidth <= 768) {
+    closeSidebar();
+  }
 }
 
 // View Switcher
@@ -465,7 +471,7 @@ function updateSidebarLists() {
         <span style="color: var(--accent-star);">Resume</span>
       `;
       div.addEventListener("click", () => {
-        closeSidebar();
+        closeSidebarIfMobile();
         currentQuizQuestions = draft.questions;
         currentQuestionIndex = draft.currentIndex;
         userAnswers = draft.answers;
@@ -490,7 +496,7 @@ function updateSidebarLists() {
         <span style="color: var(--accent-green); font-weight: bold;">${item.score}/${item.total} (${item.percent}%)</span>
       `;
       div.addEventListener("click", () => {
-        closeSidebar();
+        closeSidebarIfMobile();
         el.scorePercent.textContent = `${item.percent}%`;
         el.resultsSummary.textContent = `Scored ${item.score} out of ${item.total}`;
         el.resultsHeading.textContent = "Past Quiz Review";
