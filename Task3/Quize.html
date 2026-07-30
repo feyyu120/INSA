@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programming Quiz App</title>
+  <link rel="stylesheet" href="Quize.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <!-- ChatGPT Style Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <button class="btn-new-quiz" id="btn-new-quiz">
+          <span class="plus-icon">+</span>
+          <span>New Quiz</span>
+        </button>
+        <button class="btn-icon" id="btn-close-sidebar" title="Close Sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sidebar-menu">
+        <button class="menu-item active" id="menu-quiz">
+          <span class="menu-icon">📝</span>
+          <span>Active Quiz</span>
+        </button>
+        <button class="menu-item" id="menu-favorites">
+          <span class="menu-icon">⭐</span>
+          <span>Favourites</span>
+          <span class="badge" id="fav-badge">0</span>
+        </button>
+
+        <div class="sidebar-section-title">In Progress</div>
+        <div class="sidebar-list" id="inprogress-list">
+          <div class="empty-text">No unfinished quiz</div>
+        </div>
+
+        <div class="sidebar-section-title">Quiz History</div>
+        <div class="sidebar-list" id="history-list">
+          <div class="empty-text">No quiz history</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar Backdrop Overlay -->
+    <div class="overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content Area -->
+    <main class="main">
+      <!-- Top Header -->
+      <header class="header">
+        <button class="btn-hamburger" id="btn-hamburger" title="Toggle Sidebar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <h1 class="header-title">Programming Quiz</h1>
+        <div class="header-right">
+          <span class="quiz-progress" id="quiz-progress">Q 1/5</span>
+        </div>
+      </header>
+
+      <!-- Quiz View -->
+      <div class="view" id="view-quiz">
+        <div class="card quiz-card">
+          <!-- Loading State Banner -->
+          <div class="loading-spinner hidden" id="loading-spinner">
+            <div class="spinner"></div>
+            <span>Fetching questions from OpenTDB...</span>
+          </div>
+
+          <div id="quiz-card-content">
+            <div class="card-header">
+              <span class="question-number" id="question-number">Question 1 of 5</span>
+              <button class="btn-star" id="btn-star">
+                <span class="star-icon">★</span>
+                <span id="star-text">Favorite</span>
+              </button>
+            </div>
+
+            <h2 class="question-title" id="question-title">Loading question...</h2>
+
+            <div class="options-container" id="options-container">
+              <!-- Option buttons inserted via JS -->
+            </div>
+
+            <div class="explanation-alert hidden" id="explanation-alert">
+              <strong>Result:</strong>
+              <p id="explanation-text"></p>
+            </div>
+
+            <div class="card-footer">
+              <button class="btn btn-secondary" id="btn-prev" disabled>Previous</button>
+              <button class="btn btn-secondary" id="btn-save-draft">Save & Exit</button>
+              <button class="btn btn-primary" id="btn-next">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results View -->
+      <div class="view hidden" id="view-results">
+        <div class="card results-card">
+          <div class="score-circle" id="score-circle">
+            <span id="score-percent">0%</span>
+          </div>
+          <h2 id="results-heading">Quiz Completed!</h2>
+          <p id="results-summary">You scored 0 out of 5</p>
+
+          <div class="review-container" id="review-container">
+            <!-- Review items inserted via JS -->
+          </div>
+
+          <button class="btn btn-primary" id="btn-restart">Fetch New Quiz (OpenTDB)</button>
+        </div>
+      </div>
+
+      <!-- Favorites View -->
+      <div class="view hidden" id="view-favorites">
+        <div class="card favorites-card">
+          <h2>⭐ Favorited Questions</h2>
+          <p class="subtext">Click the star button on any question during a quiz to save it here.</p>
+          <div class="fav-container" id="fav-container">
+            <div class="empty-text">No favorited questions yet.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="Quize.js"></script>
+</body>
+</html>
