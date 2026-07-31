@@ -1,0 +1,652 @@
+[
+  {
+    "id": 1,
+    "category": "Tech",
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyper Text Markup Language",
+      "High Tech Modern Language",
+      "Hyperlink and Text Management Language",
+      "Home Tool Markup Language"
+    ],
+    "answer": 0,
+    "explanation": "HTML stands for Hyper Text Markup Language, the standard markup language for web pages."
+  },
+  {
+    "id": 2,
+    "category": "Tech",
+    "question": "Which CSS property is used to change the background color of an element?",
+    "options": [
+      "color",
+      "background-color",
+      "bg-color",
+      "canvas-color"
+    ],
+    "answer": 1,
+    "explanation": "The 'background-color' property sets the background color of an element in CSS."
+  },
+  {
+    "id": 3,
+    "category": "Tech",
+    "question": "How do you declare a block-scoped variable in modern JavaScript?",
+    "options": [
+      "var myVar;",
+      "let myVar;",
+      "variable myVar;",
+      "dim myVar;"
+    ],
+    "answer": 1,
+    "explanation": "In modern JavaScript (ES6+), block-scoped variables are declared using 'let' or 'const'."
+  },
+  {
+    "id": 4,
+    "category": "Tech",
+    "question": "Which programming language is known as the backbone of Web Development alongside HTML and CSS?",
+    "options": [
+      "Python",
+      "C++",
+      "JavaScript",
+      "Java"
+    ],
+    "answer": 2,
+    "explanation": "JavaScript is the primary scripting language used to create dynamic and interactive content on the web."
+  },
+  {
+    "id": 5,
+    "category": "Tech",
+    "question": "What does CPU stand for in computer hardware?",
+    "options": [
+      "Central Processing Unit",
+      "Computer Power Unit",
+      "Central Performance Utility",
+      "Control Program Unit"
+    ],
+    "answer": 0,
+    "explanation": "CPU stands for Central Processing Unit, often called the brain of the computer."
+  },
+  {
+    "id": 6,
+    "category": "Tech",
+    "question": "Which protocol is used to transmit web pages securely across the internet?",
+    "options": [
+      "HTTP",
+      "HTTPS",
+      "FTP",
+      "SMTP"
+    ],
+    "answer": 1,
+    "explanation": "HTTPS (Hypertext Transfer Protocol Secure) encrypts communication using TLS/SSL."
+  },
+  {
+    "id": 7,
+    "category": "Tech",
+    "question": "What does RAM stand for?",
+    "options": [
+      "Read Access Memory",
+      "Random Access Memory",
+      "Run Auto Memory",
+      "Rapid Action Storage"
+    ],
+    "answer": 1,
+    "explanation": "RAM stands for Random Access Memory, which stores working data and machine code currently in use."
+  },
+  {
+    "id": 8,
+    "category": "Tech",
+    "question": "Which SQL keyword is used to retrieve data from a database table?",
+    "options": [
+      "GET",
+      "FETCH",
+      "SELECT",
+      "EXTRACT"
+    ],
+    "answer": 2,
+    "explanation": "The SELECT statement is used to query data from a database."
+  },
+  {
+    "id": 9,
+    "category": "Tech",
+    "question": "Which git command is used to record changes into the repository history?",
+    "options": [
+      "git push",
+      "git commit",
+      "git save",
+      "git add"
+    ],
+    "answer": 1,
+    "explanation": "'git commit' captures a snapshot of the project's currently staged changes."
+  },
+  {
+    "id": 10,
+    "category": "Tech",
+    "question": "What is the primary function of an Operating System (OS)?",
+    "options": [
+      "Managing hardware and software resources",
+      "Creating web applications",
+      "Editing high-resolution images",
+      "Compiling source code into binary"
+    ],
+    "answer": 0,
+    "explanation": "An Operating System manages computer hardware resources and provides common services for software applications."
+  },
+  {
+    "id": 11,
+    "category": "Tech",
+    "question": "Which data structure operates on a First-In, First-Out (FIFO) basis?",
+    "options": [
+      "Stack",
+      "Queue",
+      "Tree",
+      "Graph"
+    ],
+    "answer": 1,
+    "explanation": "A Queue operates on a FIFO basis, where the first element added is the first one removed."
+  },
+  {
+    "id": 12,
+    "category": "Tech",
+    "question": "What is the time complexity of accessing an element in an array by its index?",
+    "options": [
+      "O(1)",
+      "O(n)",
+      "O(log n)",
+      "O(n^2)"
+    ],
+    "answer": 0,
+    "explanation": "Array element access by index takes constant time, O(1)."
+  },
+  {
+    "id": 13,
+    "category": "Tech",
+    "question": "Which HTTP status code signifies 'Not Found'?",
+    "options": [
+      "200",
+      "301",
+      "404",
+      "500"
+    ],
+    "answer": 2,
+    "explanation": "HTTP status code 404 indicates that the server cannot find the requested resource."
+  },
+  {
+    "id": 14,
+    "category": "Tech",
+    "question": "What does IP stand for in IP address?",
+    "options": [
+      "Internet Protocol",
+      "Internal Port",
+      "Interconnected Path",
+      "Information Provider"
+    ],
+    "answer": 0,
+    "explanation": "IP stands for Internet Protocol, which governs the format of data sent over the internet."
+  },
+  {
+    "id": 15,
+    "category": "Tech",
+    "question": "Which company developed the Python programming language?",
+    "options": [
+      "Guido van Rossum",
+      "Microsoft",
+      "Sun Microsystems",
+      "Bell Labs"
+    ],
+    "answer": 0,
+    "explanation": "Python was created by Guido van Rossum and released in 1991."
+  },
+  {
+    "id": 16,
+    "category": "Biology",
+    "question": "What is known as the powerhouse of the cell?",
+    "options": [
+      "Nucleus",
+      "Mitochondria",
+      "Ribosome",
+      "Endoplasmic Reticulum"
+    ],
+    "answer": 1,
+    "explanation": "Mitochondria generate most of the chemical energy (ATP) needed to power cell reactions."
+  },
+  {
+    "id": 17,
+    "category": "Biology",
+    "question": "What process do plants use to convert sunlight into chemical energy?",
+    "options": [
+      "Respiration",
+      "Photosynthesis",
+      "Fermentation",
+      "Transpiration"
+    ],
+    "answer": 1,
+    "explanation": "Photosynthesis converts light energy, water, and carbon dioxide into glucose and oxygen."
+  },
+  {
+    "id": 18,
+    "category": "Biology",
+    "question": "Which molecule carries genetic code in almost all living organisms?",
+    "options": [
+      "RNA",
+      "ATP",
+      "DNA",
+      "Protein"
+    ],
+    "answer": 2,
+    "explanation": "DNA (Deoxyribonucleic acid) stores genetic instructions used in growth and reproduction."
+  },
+  {
+    "id": 19,
+    "category": "Biology",
+    "question": "What type of blood cells are responsible for fighting infections?",
+    "options": [
+      "Red Blood Cells",
+      "White Blood Cells",
+      "Platelets",
+      "Plasma Cells"
+    ],
+    "answer": 1,
+    "explanation": "White blood cells (leukocytes) defend the body against infectious disease and foreign invaders."
+  },
+  {
+    "id": 20,
+    "category": "Biology",
+    "question": "How many chambers does a human heart have?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "6"
+    ],
+    "answer": 2,
+    "explanation": "The human heart has 4 chambers: two atria (upper) and two ventricles (lower)."
+  },
+  {
+    "id": 21,
+    "category": "Biology",
+    "question": "Which human organ produces insulin?",
+    "options": [
+      "Liver",
+      "Pancreas",
+      "Kidney",
+      "Stomach"
+    ],
+    "answer": 1,
+    "explanation": "The pancreas produces insulin, a hormone that regulates blood glucose levels."
+  },
+  {
+    "id": 22,
+    "category": "Biology",
+    "question": "What pigment gives plants their green color?",
+    "options": [
+      "Carotene",
+      "Chlorophyll",
+      "Melanin",
+      "Hemoglobin"
+    ],
+    "answer": 1,
+    "explanation": "Chlorophyll is the green pigment in plants that absorbs light for photosynthesis."
+  },
+  {
+    "id": 23,
+    "category": "Biology",
+    "question": "Which part of the brain controls balance and motor coordination?",
+    "options": [
+      "Cerebrum",
+      "Cerebellum",
+      "Brainstem",
+      "Hypothalamus"
+    ],
+    "answer": 1,
+    "explanation": "The cerebellum coordinates voluntary movements such as posture, balance, and speech."
+  },
+  {
+    "id": 24,
+    "category": "Biology",
+    "question": "What is the largest organ in the human body?",
+    "options": [
+      "Liver",
+      "Brain",
+      "Skin",
+      "Lungs"
+    ],
+    "answer": 2,
+    "explanation": "Skin is the body's largest organ, covering and protecting the entire outer surface."
+  },
+  {
+    "id": 25,
+    "category": "Biology",
+    "question": "What gas do humans inhale for cellular respiration?",
+    "options": [
+      "Carbon Dioxide",
+      "Nitrogen",
+      "Oxygen",
+      "Hydrogen"
+    ],
+    "answer": 2,
+    "explanation": "Humans inhale oxygen, which cells use to break down glucose and release ATP energy."
+  },
+  {
+    "id": 26,
+    "category": "Biology",
+    "question": "Which blood group is known as the universal donor?",
+    "options": [
+      "A Positive",
+      "B Negative",
+      "AB Positive",
+      "O Negative"
+    ],
+    "answer": 3,
+    "explanation": "O Negative blood can be given to patients of any blood type in emergencies."
+  },
+  {
+    "id": 27,
+    "category": "Biology",
+    "question": "What are the structural building blocks of proteins?",
+    "options": [
+      "Fatty Acids",
+      "Amino Acids",
+      "Monosaccharides",
+      "Nucleotides"
+    ],
+    "answer": 1,
+    "explanation": "Proteins are constructed from long chains of organic compounds called amino acids."
+  },
+  {
+    "id": 28,
+    "category": "Biology",
+    "question": "Which kingdom do mushrooms belong to?",
+    "options": [
+      "Plantae",
+      "Animalia",
+      "Fungi",
+      "Protista"
+    ],
+    "answer": 2,
+    "explanation": "Mushrooms belong to the Fungi kingdom, obtaining nutrients by absorbing organic matter."
+  },
+  {
+    "id": 29,
+    "category": "Biology",
+    "question": "What biological term describes animals that eat both plants and meat?",
+    "options": [
+      "Herbivores",
+      "Carnivores",
+      "Omnivores",
+      "Decomposers"
+    ],
+    "answer": 2,
+    "explanation": "Omnivores consume both plant and animal material for nutrition."
+  },
+  {
+    "id": 30,
+    "category": "Biology",
+    "question": "Which enzyme in human saliva begins the breakdown of carbohydrates?",
+    "options": [
+      "Pepsin",
+      "Amylase",
+      "Lipase",
+      "Trypsin"
+    ],
+    "answer": 1,
+    "explanation": "Salivary amylase breaks complex starches down into simple sugars in the mouth."
+  },
+  {
+    "id": 31,
+    "category": "General Science",
+    "question": "What chemical symbol represents Gold on the periodic table?",
+    "options": [
+      "Ag",
+      "Au",
+      "Fe",
+      "Gd"
+    ],
+    "answer": 1,
+    "explanation": "Au (from the Latin word 'Aurum') is the chemical symbol for Gold."
+  },
+  {
+    "id": 32,
+    "category": "General Science",
+    "question": "What is the speed of light in a vacuum approximately?",
+    "options": [
+      "300,000 km/s",
+      "150,000 km/s",
+      "1,000,000 km/s",
+      "30,000 km/s"
+    ],
+    "answer": 0,
+    "explanation": "Light travels in a vacuum at approximately 300,000 kilometers per second (299,792 km/s)."
+  },
+  {
+    "id": 33,
+    "category": "General Science",
+    "question": "Which planet is known as the Red Planet?",
+    "options": [
+      "Venus",
+      "Jupiter",
+      "Mars",
+      "Saturn"
+    ],
+    "answer": 2,
+    "explanation": "Mars appears reddish due to iron oxide (rust) on its surface."
+  },
+  {
+    "id": 34,
+    "category": "General Science",
+    "question": "What is the boiling point of pure water at sea level in Celsius?",
+    "options": [
+      "90 °C",
+      "100 °C",
+      "110 °C",
+      "120 °C"
+    ],
+    "answer": 1,
+    "explanation": "Water boils at 100 °C (212 °F) under standard atmospheric pressure."
+  },
+  {
+    "id": 35,
+    "category": "General Science",
+    "question": "Which gas makes up the largest percentage of Earth's atmosphere?",
+    "options": [
+      "Oxygen",
+      "Carbon Dioxide",
+      "Nitrogen",
+      "Argon"
+    ],
+    "answer": 2,
+    "explanation": "Nitrogen makes up roughly 78% of Earth's atmospheric volume."
+  },
+  {
+    "id": 36,
+    "category": "General Science",
+    "question": "What force holds planets in orbit around the Sun?",
+    "options": [
+      "Friction",
+      "Gravity",
+      "Magnetism",
+      "Nuclear Force"
+    ],
+    "answer": 1,
+    "explanation": "Gravitational pull between celestial bodies keeps planets orbiting the Sun."
+  },
+  {
+    "id": 37,
+    "category": "General Science",
+    "question": "What pH value represents a neutral solution like pure water?",
+    "options": [
+      "0",
+      "7",
+      "14",
+      "5"
+    ],
+    "answer": 1,
+    "explanation": "A pH of 7 is considered neutral on the logarithmic pH scale."
+  },
+  {
+    "id": 38,
+    "category": "General Science",
+    "question": "What particle in an atom carries a negative electric charge?",
+    "options": [
+      "Proton",
+      "Neutron",
+      "Electron",
+      "Photon"
+    ],
+    "answer": 2,
+    "explanation": "Electrons carry a negative unit charge, orbiting around the atomic nucleus."
+  },
+  {
+    "id": 39,
+    "category": "General Science",
+    "question": "What layer of Earth lies directly below the crust?",
+    "options": [
+      "Inner Core",
+      "Outer Core",
+      "Mantle",
+      "Lithosphere"
+    ],
+    "answer": 2,
+    "explanation": "The mantle is a semi-solid silicate layer situated between the crust and the outer core."
+  },
+  {
+    "id": 40,
+    "category": "General Science",
+    "question": "What sound wave frequency unit is named after a German physicist?",
+    "options": [
+      "Joule",
+      "Watt",
+      "Hertz",
+      "Pascal"
+    ],
+    "answer": 2,
+    "explanation": "Hertz (Hz), representing cycles per second, is named after Heinrich Hertz."
+  },
+  {
+    "id": 41,
+    "category": "History",
+    "question": "In which year did World War II end?",
+    "options": [
+      "1918",
+      "1939",
+      "1945",
+      "1950"
+    ],
+    "answer": 2,
+    "explanation": "World War II concluded in 1945 following the surrender of Axis forces."
+  },
+  {
+    "id": 42,
+    "category": "History",
+    "question": "Who was the first President of the United States?",
+    "options": [
+      "Thomas Jefferson",
+      "George Washington",
+      "Abraham Lincoln",
+      "John Adams"
+    ],
+    "answer": 1,
+    "explanation": "George Washington served as the first U.S. President from 1789 to 1797."
+  },
+  {
+    "id": 43,
+    "category": "History",
+    "question": "Which ancient civilization built the Pyramids of Giza?",
+    "options": [
+      "Greeks",
+      "Romans",
+      "Egyptians",
+      "Babylonians"
+    ],
+    "answer": 2,
+    "explanation": "The Pyramids of Giza were constructed by the ancient Egyptians during the Old Kingdom."
+  },
+  {
+    "id": 44,
+    "category": "History",
+    "question": "Who painted the Mona Lisa?",
+    "options": [
+      "Vincent van Gogh",
+      "Leonardo da Vinci",
+      "Pablo Picasso",
+      "Michelangelo"
+    ],
+    "answer": 1,
+    "explanation": "Leonardo da Vinci painted the Mona Lisa during the Italian Renaissance."
+  },
+  {
+    "id": 45,
+    "category": "History",
+    "question": "Which empire was ruled by Julius Caesar?",
+    "options": [
+      "Ottoman Empire",
+      "British Empire",
+      "Roman Republic",
+      "Mongol Empire"
+    ],
+    "answer": 2,
+    "explanation": "Julius Caesar played a pivotal role in the transformation of the Roman Republic into the Roman Empire."
+  },
+  {
+    "id": 46,
+    "category": "History",
+    "question": "What wall separated East and West Berlin from 1961 to 1989?",
+    "options": [
+      "The Great Wall",
+      "The Berlin Wall",
+      "Hadrian's Wall",
+      "The Iron Curtain Wall"
+    ],
+    "answer": 1,
+    "explanation": "The Berlin Wall divided the city of Berlin during the Cold War until its fall in 1989."
+  },
+  {
+    "id": 47,
+    "category": "History",
+    "question": "Who was the famous queen of ancient Egypt known for her relationships with Caesar and Antony?",
+    "options": [
+      "Nefertiti",
+      "Cleopatra",
+      "Hatshepsut",
+      "Isis"
+    ],
+    "answer": 1,
+    "explanation": "Cleopatra VII was the active ruler of the Ptolemaic Kingdom of Egypt."
+  },
+  {
+    "id": 48,
+    "category": "History",
+    "question": "Which revolution began in 1789 with the storming of the Bastille?",
+    "options": [
+      "American Revolution",
+      "French Revolution",
+      "Industrial Revolution",
+      "Russian Revolution"
+    ],
+    "answer": 1,
+    "explanation": "The French Revolution began in 1789, overthrew the monarchy, and established a republic."
+  },
+  {
+    "id": 49,
+    "category": "History",
+    "question": "Who invented the telephone?",
+    "options": [
+      "Thomas Edison",
+      "Alexander Graham Bell",
+      "Nikola Tesla",
+      "Guglielmo Marconi"
+    ],
+    "answer": 1,
+    "explanation": "Alexander Graham Bell was awarded the first US patent for the telephone in 1876."
+  },
+  {
+    "id": 50,
+    "category": "History",
+    "question": "What trade network connected China to the Mediterranean world for centuries?",
+    "options": [
+      "Spice Route",
+      "Silk Road",
+      "Trans-Saharan Route",
+      "Amber Road"
+    ],
+    "answer": 1,
+    "explanation": "The Silk Road was an ancient network of Eurasian trade routes active from 130 BCE to the 1450s."
+  }
+]
