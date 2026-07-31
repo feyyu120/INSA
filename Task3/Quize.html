@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <div class="app">
+    <!-- ChatGPT Style Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-top">
         <button class="btn-new-quiz" id="btn-new-quiz">
@@ -73,6 +72,12 @@
       <!-- Quiz View -->
       <div class="view" id="view-quiz">
         <div class="card quiz-card">
+          <!-- Loading State Banner -->
+          <div class="loading-spinner hidden" id="loading-spinner">
+            <div class="spinner"></div>
+            <span>Loading questions...</span>
+          </div>
+
           <div id="quiz-card-content">
             <div class="card-header">
               <div style="display: flex; align-items: center; gap: 10px;">
@@ -137,5 +142,4 @@
 
   <script src="Quize.js"></script>
 </body>
-
 </html>
