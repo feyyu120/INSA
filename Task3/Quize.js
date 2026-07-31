@@ -1,5 +1,5 @@
-// OpenTDB API Endpoint (Category 18 = Science: Computers)
-const OPENTDB_API_URL = "https://opentdb.com/api.php?amount=5&category=18&type=multiple";
+// Local Questions JSON File
+const LOCAL_QUESTIONS_URL = "questions.json";
 
 // Active State
 let currentQuizQuestions = [];
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quizCardContent: document.getElementById("quiz-card-content"),
     quizProgress: document.getElementById("quiz-progress"),
     questionNumber: document.getElementById("question-number"),
+    questionCategory: document.getElementById("question-category"),
     btnStar: document.getElementById("btn-star"),
     starText: document.getElementById("star-text"),
     questionTitle: document.getElementById("question-title"),
@@ -169,68 +170,76 @@ function decodeHTML(htmlStr) {
   return txt.value;
 }
 
-// Fetch 5 Questions from OpenTDB API
+// Fetch 5 Questions from local questions.json file
 function fetchQuestionsAndStartQuiz() {
   switchView("quiz");
   el.loadingSpinner.classList.remove("hidden");
   el.quizCardContent.classList.add("hidden");
 
-  fetch(OPENTDB_API_URL)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.results && data.results.length > 0) {
-        const fetched = [];
+  fetch(LOCAL_QUESTIONS_URL)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("HTTP error " + response.status);
+      }
+      return response.json();
+    })
+    .then((allQuestions) => {
+      if (allQuestions && allQuestions.length > 0) {
+        // Clone and shuffle all questions from questions.json
+        const pool = [...allQuestions];
+        for (let i = pool.length - 1; i > 0; i--) {
+          const r = Math.floor(Math.random() * (i + 1));
+          const temp = pool[i];
+          pool[i] = pool[r];
+          pool[r] = temp;
+        }
 
-        // Use a JS for loop to parse API results
-        for (let i = 0; i < data.results.length; i++) {
-          const item = data.results[i];
-          const decodedQuestion = decodeHTML(item.question);
-          const decodedCorrect = decodeHTML(item.correct_answer);
+        // Select 5 random questions for this quiz session
+        const selected = pool.slice(0, 5);
 
-          // Decode incorrect answers
-          const decodedIncorrect = [];
-          for (let j = 0; j < item.incorrect_answers.length; j++) {
-            decodedIncorrect.push(decodeHTML(item.incorrect_answers[j]));
+        // Format selected questions and shuffle options
+        const quizList = [];
+        for (let i = 0; i < selected.length; i++) {
+          const item = selected[i];
+          const originalCorrect = item.options[item.answer];
+
+          // Copy options and shuffle them
+          const optionsCopy = [...item.options];
+          for (let k = optionsCopy.length - 1; k > 0; k--) {
+            const r = Math.floor(Math.random() * (k + 1));
+            const temp = optionsCopy[k];
+            optionsCopy[k] = optionsCopy[r];
+            optionsCopy[r] = temp;
           }
 
-          // Combine correct and incorrect choices
-          const allOptions = [decodedCorrect, ...decodedIncorrect];
-
-          // Shuffle choices using Fisher-Yates shuffle loop
-          for (let k = allOptions.length - 1; k > 0; k--) {
-            const randomIndex = Math.floor(Math.random() * (k + 1));
-            const temp = allOptions[k];
-            allOptions[k] = allOptions[randomIndex];
-            allOptions[randomIndex] = temp;
-          }
-
-          // Find correct answer index in shuffled options
-          let correctIdx = 0;
-          for (let m = 0; m < allOptions.length; m++) {
-            if (allOptions[m] === decodedCorrect) {
-              correctIdx = m;
+          // Find new index of correct answer
+          let newCorrectIdx = 0;
+          for (let m = 0; m < optionsCopy.length; m++) {
+            if (optionsCopy[m] === originalCorrect) {
+              newCorrectIdx = m;
               break;
             }
           }
 
-          fetched.push({
-            id: "api_" + Date.now() + "_" + i,
-            question: decodedQuestion,
-            options: allOptions,
-            answer: correctIdx,
-            explanation: `The correct answer is "${decodedCorrect}".`
+          quizList.push({
+            id: item.id || ("q_" + Date.now() + "_" + i),
+            category: item.category || "General",
+            question: item.question,
+            options: optionsCopy,
+            answer: newCorrectIdx,
+            explanation: item.explanation
           });
         }
 
-        currentQuizQuestions = fetched;
+        currentQuizQuestions = quizList;
         startNewQuizState();
       } else {
-        showFetchError("Unable to load questions from the website API.");
+        showFetchError("No questions found in questions.json.");
       }
     })
     .catch((err) => {
-      console.error("OpenTDB Fetch failed:", err);
-      showFetchError("Failed to fetch questions from the website API. Please check your network connection.");
+      console.error("Local questions.json load failed:", err);
+      showFetchError("Unable to load questions.json. Please check if the file is present.");
     });
 }
 
@@ -273,6 +282,9 @@ function renderQuestion() {
   const total = currentQuizQuestions.length;
 
   el.questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${total}`;
+  if (el.questionCategory) {
+    el.questionCategory.textContent = q.category || "General";
+  }
   el.quizProgress.textContent = `Q ${currentQuestionIndex + 1}/${total}`;
   el.questionTitle.textContent = q.question;
 
@@ -592,7 +604,10 @@ function renderFavoritesView() {
     card.className = "fav-card";
     card.innerHTML = `
       <div class="fav-card-top">
-        <strong>${q.question}</strong>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <strong>${q.question}</strong>
+          <span class="category-badge">${q.category || "General"}</span>
+        </div>
         <button class="btn-delete-fav" title="Remove from Favorites">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="3 6 5 6 21 6"></polyline>

@@ -75,12 +75,15 @@
           <!-- Loading State Banner -->
           <div class="loading-spinner hidden" id="loading-spinner">
             <div class="spinner"></div>
-            <span>Fetching questions from OpenTDB...</span>
+            <span>Loading questions...</span>
           </div>
 
           <div id="quiz-card-content">
             <div class="card-header">
-              <span class="question-number" id="question-number">Question 1 of 5</span>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="question-number" id="question-number">Question 1 of 5</span>
+                <span class="category-badge" id="question-category">Tech</span>
+              </div>
               <button class="btn-star" id="btn-star">
                 <span class="star-icon">★</span>
                 <span id="star-text">Favorite</span>
@@ -120,7 +123,7 @@
             <!-- Review items inserted via JS -->
           </div>
 
-          <button class="btn btn-primary" id="btn-restart">Fetch New Quiz (OpenTDB)</button>
+          <button class="btn btn-primary" id="btn-restart">Start New Quiz</button>
         </div>
       </div>
 

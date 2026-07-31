@@ -311,6 +311,18 @@ body:not(.sidebar-closed) .btn-hamburger {
   font-weight: 500;
 }
 
+.category-badge {
+  background: rgba(16, 163, 127, 0.15);
+  color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+  padding: 2px 9px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
 .btn-star {
   background: transparent;
   border: 1px solid var(--border-color);
