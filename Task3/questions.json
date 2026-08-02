@@ -635,18 +635,5 @@
     ],
     "answer": 1,
     "explanation": "Alexander Graham Bell was awarded the first US patent for the telephone in 1876."
-  },
-  {
-    "id": 50,
-    "category": "History",
-    "question": "What trade network connected China to the Mediterranean world for centuries?",
-    "options": [
-      "Spice Route",
-      "Silk Road",
-      "Trans-Saharan Route",
-      "Amber Road"
-    ],
-    "answer": 1,
-    "explanation": "The Silk Road was an ancient network of Eurasian trade routes active from 130 BCE to the 1450s."
   }
 ]
